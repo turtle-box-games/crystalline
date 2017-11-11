@@ -41,6 +41,8 @@
   <ItemGroup>
     <Compile Include="Geometry\Point2D.cs" />
     <Compile Include="Geometry\Point2I.cs" />
+    <Compile Include="Geometry\Point3D.cs" />
+    <Compile Include="Geometry\Point3I.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
