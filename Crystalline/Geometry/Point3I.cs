@@ -10,6 +10,11 @@ namespace Crystalline.Geometry
     public struct Point3I : IEquatable<Point3I>
     {
         /// <summary>
+        /// Point at the center of the coordinate grid.
+        /// </summary>
+        public static readonly Point3I Origin = new Point3I(0, 0, 0);
+        
+        /// <summary>
         /// X-coordinate of the point.
         /// </summary>
         public int X { get; }
