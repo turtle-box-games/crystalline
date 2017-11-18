@@ -39,10 +39,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Range.cs" />
+    <Compile Include="Geometry\IntersectionExtensions.cs" />
+    <Compile Include="Geometry\Line2D.cs" />
+    <Compile Include="Geometry\Line3D.cs" />
+    <Compile Include="Geometry\LineExtensions.cs" />
     <Compile Include="Geometry\Point2D.cs" />
     <Compile Include="Geometry\Point2I.cs" />
     <Compile Include="Geometry\Point3D.cs" />
     <Compile Include="Geometry\Point3I.cs" />
+    <Compile Include="Geometry\PointExtensions.cs" />
+    <Compile Include="Geometry\Rect2D.cs" />
+    <Compile Include="Geometry\Rect2I.cs" />
+    <Compile Include="Geometry\Rect3D.cs" />
+    <Compile Include="Geometry\Rect3I.cs" />
+    <Compile Include="Geometry\Tri2D.cs" />
+    <Compile Include="Geometry\Tri3D.cs" />
+    <Compile Include="Geometry\Vector2D.cs" />
+    <Compile Include="Geometry\Vector3D.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
