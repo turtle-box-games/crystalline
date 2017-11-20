@@ -22,16 +22,20 @@ namespace Crystalline
         /// <summary>
         /// Number of integers in the range.
         /// </summary>
-        public int Count { get; }
+        public int Count => End - Start;
 
         /// <summary>
         /// Creates a new range of values.
         /// </summary>
         /// <param name="start">Start of the range - inclusive.</param>
         /// <param name="end">End of the range - exclusive.</param>
+        /// <exception cref="ArgumentException">The end of the range must be after the start.</exception>
         public Range(int start, int end)
         {
-            throw new NotImplementedException();
+            if(end <= start)
+                throw new ArgumentException("End of range must be after start.");
+            Start = start;
+            End   = end;
         }
 
         /// <summary>
@@ -41,7 +45,7 @@ namespace Crystalline
         /// <returns>True if the range contains the value, or false if it doesn't.</returns>
         public bool Contains(int value)
         {
-            throw new NotImplementedException();
+            return value >= Start && value < End;
         }
 
         /// <summary>
