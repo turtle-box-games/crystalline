@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace Crystalline.Test
 {
@@ -20,14 +21,14 @@ namespace Crystalline.Test
         }
 
         [Test(Description = "Test that Count property returns the difference between End and Start.")]
-        public void CountTest([Random(-500, 500, 5)] int start, [Random(25, 50, 5)] int count)
+        public void CountTest([Random(-500, 500, 2)] int start, [Random(25, 50, 2)] int count)
         {
             var range = new Range(start, start + count);
             Assert.That(range.Count, Is.EqualTo(count));
         }
 
         [Test(Description = "Test that an exception is raised if End is before Start.")]
-        public void EndBeforeStartTest([Random(-500, 500, 5)] int start, [Values(1, 2, 5)] int before)
+        public void EndBeforeStartTest([Random(-500, 500, 2)] int start, [Values(1, 2, 2)] int before)
         {
             Assert.That(() => { new Range(start, start - before); }, Throws.ArgumentException);
         }
@@ -39,11 +40,10 @@ namespace Crystalline.Test
         }
 
         [Test(Description = "Test that a value can be found within the range when it is inside.")]
-        public void ContainsValueTest([Random(-500, 500, 2)] int start, [Random(25, 50, 2)] int count,
-            [Random(0, 50, 2)] int offset)
+        public void ContainsValueTest([Random(-500, 500, 2)] int start, [Random(25, 50, 2)] int count)
         {
             var end   = start + count;
-            var value = start + offset;
+            var value = new Random().Next(start, end);
             var range = new Range(start, end);
             Assert.That(range.Contains(value), Is.True);
         }
