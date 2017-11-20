@@ -25,6 +25,16 @@ namespace Crystalline
         public int Count { get; }
 
         /// <summary>
+        /// Creates a new range of values.
+        /// </summary>
+        /// <param name="start">Start of the range - inclusive.</param>
+        /// <param name="end">End of the range - exclusive.</param>
+        public Range(int start, int end)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
         /// Checks whether a value is within the range.
         /// </summary>
         /// <param name="value">Value to check.</param>
