@@ -82,59 +82,108 @@ namespace Crystalline
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Checks whether this range is equal to another one.
+        /// </summary>
+        /// <param name="other">Other range to compare against.</param>
+        /// <returns>True if the ranges are identical, false otherwise.</returns>
         public bool Equals(Range other)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Compares this instance to another.
+        /// </summary>
+        /// <param name="obj">Other instance to compare against.</param>
+        /// <returns>True if the instance is a range with the same values.</returns>
         public override bool Equals(object obj)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Generates a hash code from the values in the range.
+        /// </summary>
+        /// <returns>A hash code.</returns>
         public override int GetHashCode()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Compares two ranges to determine whether they are equal.
+        /// </summary>
+        /// <param name="left">First range to compare.</param>
+        /// <param name="right">Second range to compare.</param>
+        /// <returns>True if the ranges are identical, false if they're different.</returns>
         public static bool operator ==(Range left, Range right)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Compares two ranges to determine whether they are different.
+        /// </summary>
+        /// <param name="left">First range to compare.</param>
+        /// <param name="right">Second range to compare.</param>
+        /// <returns>True if the ranges are different, false if they're the same.</returns>
+        /// <exception cref="NotImplementedException"></exception>
         public static bool operator !=(Range left, Range right)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Enumerator for iterating over values in a range.
+        /// </summary>
         private class Enumerator : IEnumerator<int>
         {
+            /// <summary>
+            /// Creates the enumerator.
+            /// </summary>
+            /// <param name="lower">Lower bound on the range.</param>
+            /// <param name="upper">Upper (non-inclusive) bound on the range.</param>
+            /// <param name="step">Amount to increment each iteration.</param>
             public Enumerator(int lower, int upper, int step = 1)
             {
                 throw new NotImplementedException();
             }
             
+            /// <summary>
+            /// Cleans up resources used by the enumerator.
+            /// </summary>
             public void Dispose()
             {
                 throw new NotImplementedException();
             }
 
+            /// <summary>
+            /// Advances to the next value in the range.
+            /// </summary>
+            /// <returns>True while the end of the range hasn't been reached.</returns>
             public bool MoveNext()
             {
                 throw new NotImplementedException();
             }
 
+            /// <summary>
+            /// Resets the enumerator back to be start of the range.
+            /// </summary>
             public void Reset()
             {
                 throw new NotImplementedException();
             }
 
+            /// <summary>
+            /// Retrieves the current value of the iteration.
+            /// </summary>
             public int Current { get; }
 
-            object IEnumerator.Current
-            {
-                get { return Current; }
-            }
+            /// <summary>
+            /// Retrieves the current value of the interation.
+            /// </summary>
+            object IEnumerator.Current => Current;
         }
     }
 }
