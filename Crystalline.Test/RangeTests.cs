@@ -90,5 +90,33 @@ namespace Crystalline.Test
             var range = new Range(start, end);
             Assert.That(range.Contains(end), Is.False);
         }
+
+        [Test(Description = "Test that a smaller range can be found inside a larger range.")]
+        public void ContainsRangeTest()
+        {
+            Assert.Inconclusive();
+        }
+
+        [Test(Description = "Test that an completely exclusive range is not found inside another range.")]
+        public void DoesNotContainRangeTest()
+        {
+            Assert.Inconclusive();
+        }
+
+        [Test(Description = "Test that an overlapping range is not considered being contained.")]
+        public void DoesNotContainOverlapRangeTest()
+        {
+            Assert.Inconclusive();
+        }
+
+        [Test(Description = "Test that a range can be contained in itself.")]
+        public void ContainsSameRangeTest(
+            [Random(-500, 500, 2)] int start,
+            [Random(25, 50, 2)]    int count)
+        {
+            var end   = start + count;
+            var range = new Range(start, end);
+            Assert.That(range.Contains(range), Is.True);
+        }
     }
 }
