@@ -198,12 +198,9 @@ namespace Crystalline
             /// <returns>True while the end of the range hasn't been reached.</returns>
             public bool MoveNext()
             {
-                if (Current + _step < _upper)
-                {
-                    Current += _step;
-                    return true;
-                }
-                return false;
+                if (Current + _step >= _upper) return false;
+                Current += _step;
+                return true;
             }
 
             /// <summary>
