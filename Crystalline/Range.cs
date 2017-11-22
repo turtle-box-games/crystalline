@@ -133,6 +133,15 @@ namespace Crystalline
         }
 
         /// <summary>
+        /// Generates a string representation of the range.
+        /// </summary>
+        /// <returns>String in the form: Range[Start, End)</returns>
+        public override string ToString()
+        {
+            return $"Range[{Start}, {End})";
+        }
+
+        /// <summary>
         /// Compares two ranges to determine whether they are equal.
         /// </summary>
         /// <param name="left">First range to compare.</param>

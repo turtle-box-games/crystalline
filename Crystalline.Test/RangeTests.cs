@@ -538,5 +538,15 @@ namespace Crystalline.Test
             var other = new Range(start + 5, end + 5);
             Assert.That(range.GetHashCode(), Is.Not.EqualTo(other.GetHashCode()));
         }
+
+        [Test(Description = "Test that the generated string representation is correct.")]
+        public void StringFormatTest(
+            [Random(-500, 500, 2)] int start,
+            [Random(25, 50, 2)]    int count)
+        {
+            var end = start + count;
+            var range = new Range(start, end);
+            Assert.That(range.ToString(), Is.EqualTo($"Range[{start}, {end})"));
+        }
     }
 }
