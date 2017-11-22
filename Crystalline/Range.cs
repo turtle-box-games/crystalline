@@ -55,7 +55,7 @@ namespace Crystalline
         /// <returns>True if <paramref name="other"/> is entirely contained within this range.</returns>
         public bool Contains(Range other)
         {
-            throw new NotImplementedException();
+            return Start <= other.Start && End >= other.End;
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Crystalline
         /// <returns>True if <paramref name="other"/> overlaps partially or entirely with this range.</returns>
         public bool Overlaps(Range other)
         {
-            throw new NotImplementedException();
+            return Start < other.End && other.Start < End;
         }
 
         /// <summary>
