@@ -290,5 +290,79 @@ namespace Crystalline.Test
             var other = new Range(start - count, start);
             Assert.That(range.Overlaps(other), Is.False);
         }
+
+        [Test(Description = "Test that the enumerator can iterate through the entire range.")]
+        public void EnumeratorTest(
+            [Random(-500, 500, 2)] int start,
+            [Random(25, 50, 2)]    int count)
+        {
+            var end   = start + count;
+            var range = new Range(start, end);
+            using (var enumerator = range.GetEnumerator())
+            {
+                Assert.Multiple(() =>
+                {
+                    for (var i = start; i < end; ++i)
+                    {
+                        Assert.That(enumerator.MoveNext(), Is.True);
+                        Assert.That(enumerator.Current, Is.EqualTo(i));
+                    }
+                    Assert.That(enumerator.MoveNext(), Is.False);
+                });
+            }
+        }
+
+        [Test(Description = "Test that the enumerator can iterate through the entire range in custom increments.")]
+        public void StepEnumeratorTest(
+            [Random(-500, 500, 2)] int start,
+            [Random(25, 50, 2)]    int count,
+            [Random(2, 5, 2)]      int step)
+        {
+            var end   = start + count;
+            var range = new Range(start, end);
+            using (var enumerator = range.GetEnumerator(step))
+            {
+                Assert.Multiple(() =>
+                {
+                    for (var i = start; i < end; i += step)
+                    {
+                        Assert.That(enumerator.MoveNext(), Is.True);
+                        Assert.That(enumerator.Current, Is.EqualTo(i));
+                    }
+                    Assert.That(enumerator.MoveNext(), Is.False);
+                });
+            }
+        }
+
+        [Test(Description = "Test that the enumerator can properly reset to the start of the range.")]
+        public void ResetEnumeratorTest(
+            [Random(-500, 500, 2)] int start,
+            [Random(25, 50, 2)]    int count)
+        {
+            var end   = start + count;
+            var range = new Range(start, end);
+            using (var enumerator = range.GetEnumerator())
+            {
+                for (var i = 0; i < count / 2; ++i)
+                    enumerator.MoveNext();
+                enumerator.Reset();
+                enumerator.MoveNext();
+                Assert.That(enumerator.Current, Is.EqualTo(start));
+            }
+        }
+
+        [Test(Description = "Test that negative and zero are rejected as enumerator step values.")]
+        public void BadStepEnumeratorTest(
+            [Random(-500, 500, 1)] int start,
+            [Random(25, 50, 1)]    int count,
+            [Values(-5, -1, 0)]    int step)
+        {
+            var end = start + count;
+            var range = new Range(start, end);
+            Assert.That(() =>
+            {
+                range.GetEnumerator(step);
+            }, Throws.InstanceOf<ArgumentOutOfRangeException>());
+        }
     }
 }
