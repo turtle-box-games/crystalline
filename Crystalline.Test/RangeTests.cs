@@ -364,5 +364,179 @@ namespace Crystalline.Test
                 range.GetEnumerator(step);
             }, Throws.InstanceOf<ArgumentOutOfRangeException>());
         }
+
+        [Test(Description = "Test that two identical ranges are considered equal.")]
+        public void SameRangeEqualsTest(
+            [Random(-500, 500, 2)] int start,
+            [Random(25, 50, 2)]    int count)
+        {
+            var end   = start + count;
+            var range = new Range(start, end);
+            var other = new Range(start, end);
+            Assert.That(range.Equals(other), Is.True);
+        }
+
+        [Test(Description = "Test that two ranges, one with a different end, are considered different.")]
+        public void SameStartDifferentEndEqualsTest(
+            [Random(-500, 500, 2)] int start,
+            [Random(25, 50, 2)]    int count)
+        {
+            var end   = start + count;
+            var range = new Range(start, end);
+            var other = new Range(start, end + 5);
+            Assert.That(range.Equals(other), Is.False);
+        }
+
+        [Test(Description = "Test that two ranges, one with a different start, are considered different.")]
+        public void SameEndDifferentStartEqualsTest(
+            [Random(-500, 500, 2)] int start,
+            [Random(25, 50, 2)]    int count)
+        {
+            var end   = start + count;
+            var range = new Range(start, end);
+            var other = new Range(start + 5, end);
+            Assert.That(range.Equals(other), Is.False);
+        }
+
+        [Test(Description = "Test that two completely different ranges are not considered equal.")]
+        public void DifferentRangeEqualsTest(
+            [Random(-500, 500, 2)] int start,
+            [Random(25, 50, 2)]    int count)
+        {
+            var end   = start + count;
+            var range = new Range(start, end);
+            var other = new Range(start + 5, end + 5);
+            Assert.That(range.Equals(other), Is.False);
+        }
+
+        [Test(Description = "Test that a range is considered not equal to null.")]
+        public void NullEqualsTest(
+            [Random(-500, 500, 1)] int start,
+            [Random(25, 50, 1)]    int count)
+        {
+            var end   = start + count;
+            var range = new Range(start, end);
+            Assert.That(range.Equals(null), Is.False);
+        }
+
+        [Test(Description = "Test that a range is considered not equal to a different object type.")]
+        public void DifferentTypeEqualsTest(
+            [Random(-500, 500, 1)] int start,
+            [Random(25, 50, 1)]    int count)
+        {
+            var end   = start + count;
+            var range = new Range(start, end);
+            Assert.That(range.Equals("foobar"), Is.False);
+        }
+
+        [Test(Description = "Test that two identical ranges are considered equal with the equality operator.")]
+        public void SameRangeEqualityTest(
+            [Random(-500, 500, 2)] int start,
+            [Random(25, 50, 2)]    int count)
+        {
+            var end   = start + count;
+            var left  = new Range(start, end);
+            var right = new Range(start, end);
+            Assert.That(left == right, Is.True);
+        }
+
+        [Test(Description = "Test that two ranges, one with a different end, are considered different with the equality operator.")]
+        public void SameStartDifferentEndEqualityTest(
+            [Random(-500, 500, 2)] int start,
+            [Random(25, 50, 2)]    int count)
+        {
+            var end   = start + count;
+            var left  = new Range(start, end);
+            var right = new Range(start, end + 5);
+            Assert.That(left == right, Is.False);
+        }
+
+        [Test(Description = "Test that two ranges, one with a different start, are considered different with the equality operator.")]
+        public void SameEndDifferentStartEqualityTest(
+            [Random(-500, 500, 2)] int start,
+            [Random(25, 50, 2)]    int count)
+        {
+            var end   = start + count;
+            var left  = new Range(start, end);
+            var right = new Range(start + 5, end);
+            Assert.That(left == right, Is.False);
+        }
+
+        [Test(Description = "Test that two completely different ranges are not considered equal with the equality operator.")]
+        public void DifferentRangeEqualityTest(
+            [Random(-500, 500, 2)] int start,
+            [Random(25, 50, 2)]    int count)
+        {
+            var end   = start + count;
+            var left  = new Range(start, end);
+            var right = new Range(start + 5, end + 5);
+            Assert.That(left == right, Is.False);
+        }
+
+        [Test(Description = "Test that two identical ranges are considered equal with the inequality operator.")]
+        public void SameRangeInequalityTest(
+            [Random(-500, 500, 2)] int start,
+            [Random(25, 50, 2)]    int count)
+        {
+            var end   = start + count;
+            var left  = new Range(start, end);
+            var right = new Range(start, end);
+            Assert.That(left != right, Is.False);
+        }
+
+        [Test(Description = "Test that two ranges, one with a different end, are considered different with the inequality operator.")]
+        public void SameStartDifferentEndInequalityTest(
+            [Random(-500, 500, 2)] int start,
+            [Random(25, 50, 2)]    int count)
+        {
+            var end   = start + count;
+            var left  = new Range(start, end);
+            var right = new Range(start, end + 5);
+            Assert.That(left != right, Is.True);
+        }
+
+        [Test(Description = "Test that two ranges, one with a different start, are considered different with the inequality operator.")]
+        public void SameEndDifferentStartInequalityTest(
+            [Random(-500, 500, 2)] int start,
+            [Random(25, 50, 2)]    int count)
+        {
+            var end   = start + count;
+            var left  = new Range(start, end);
+            var right = new Range(start + 5, end);
+            Assert.That(left != right, Is.True);
+        }
+
+        [Test(Description = "Test that two completely different ranges are not considered equal with the inequality operator.")]
+        public void DifferentRangeInequalityTest(
+            [Random(-500, 500, 2)] int start,
+            [Random(25, 50, 2)]    int count)
+        {
+            var end   = start + count;
+            var left  = new Range(start, end);
+            var right = new Range(start + 5, end + 5);
+            Assert.That(left != right, Is.True);
+        }
+
+        [Test(Description = "Test that two identical ranges generate the same hash code.")]
+        public void IdenticalRangeHashTest(
+            [Random(-500, 500, 2)] int start,
+            [Random(25, 50, 2)]    int count)
+        {
+            var end   = start + count;
+            var range = new Range(start, end);
+            var other = new Range(start, end);
+            Assert.That(range.GetHashCode(), Is.EqualTo(other.GetHashCode()));
+        }
+
+        [Test(Description = "Test that two different ranges generate different hash codes.")]
+        public void DifferentRangeHashTest(
+            [Values(1, 2, 3)]    int start,
+            [Values(10, 20, 30)] int count)
+        {
+            var end   = start + count;
+            var range = new Range(start, end);
+            var other = new Range(start + 5, end + 5);
+            Assert.That(range.GetHashCode(), Is.Not.EqualTo(other.GetHashCode()));
+        }
     }
 }

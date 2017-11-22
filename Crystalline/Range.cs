@@ -106,7 +106,7 @@ namespace Crystalline
         /// <returns>True if the ranges are identical, false otherwise.</returns>
         public bool Equals(Range other)
         {
-            throw new NotImplementedException();
+            return Start == other.Start && End == other.End;
         }
 
         /// <summary>
@@ -116,7 +116,8 @@ namespace Crystalline
         /// <returns>True if the instance is a range with the same values.</returns>
         public override bool Equals(object obj)
         {
-            throw new NotImplementedException();
+            if (ReferenceEquals(null, obj)) return false;
+            return obj is Range range && Equals(range);
         }
 
         /// <summary>
@@ -125,7 +126,10 @@ namespace Crystalline
         /// <returns>A hash code.</returns>
         public override int GetHashCode()
         {
-            throw new NotImplementedException();
+            unchecked
+            {
+                return (Start * 397) ^ End;
+            }
         }
 
         /// <summary>
@@ -136,7 +140,7 @@ namespace Crystalline
         /// <returns>True if the ranges are identical, false if they're different.</returns>
         public static bool operator ==(Range left, Range right)
         {
-            throw new NotImplementedException();
+            return left.Equals(right);
         }
 
         /// <summary>
@@ -147,7 +151,7 @@ namespace Crystalline
         /// <returns>True if the ranges are different, false if they're the same.</returns>
         public static bool operator !=(Range left, Range right)
         {
-            throw new NotImplementedException();
+            return !left.Equals(right);
         }
 
         /// <summary>
