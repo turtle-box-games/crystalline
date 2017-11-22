@@ -74,7 +74,7 @@ namespace Crystalline
         /// <returns>Integer enumerator.</returns>
         public IEnumerator<int> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return new Enumerator(Start, End);
         }
 
         /// <summary>
@@ -82,9 +82,12 @@ namespace Crystalline
         /// </summary>
         /// <param name="step">Amount to increment for each step.</param>
         /// <returns>Integer step enumerator.</returns>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="step"/> must be greater than zero.</exception>
         public IEnumerator<int> GetEnumerator(int step)
         {
-            throw new NotImplementedException();
+            if(step < 1)
+                throw new ArgumentOutOfRangeException(nameof(step), "Step must be greater than zero.");
+            return new Enumerator(Start, End, step);
         }
 
         /// <summary>
@@ -93,7 +96,7 @@ namespace Crystalline
         /// <returns>Integer enumerator.</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
 
         /// <summary>
@@ -142,7 +145,6 @@ namespace Crystalline
         /// <param name="left">First range to compare.</param>
         /// <param name="right">Second range to compare.</param>
         /// <returns>True if the ranges are different, false if they're the same.</returns>
-        /// <exception cref="NotImplementedException"></exception>
         public static bool operator !=(Range left, Range right)
         {
             throw new NotImplementedException();
@@ -153,6 +155,8 @@ namespace Crystalline
         /// </summary>
         private class Enumerator : IEnumerator<int>
         {
+            private readonly int _lower, _upper, _step;
+            
             /// <summary>
             /// Creates the enumerator.
             /// </summary>
@@ -161,7 +165,10 @@ namespace Crystalline
             /// <param name="step">Amount to increment each iteration.</param>
             public Enumerator(int lower, int upper, int step = 1)
             {
-                throw new NotImplementedException();
+                _lower  = lower;
+                _upper  = upper;
+                _step   = step;
+                Current = lower - _step;
             }
             
             /// <summary>
@@ -169,7 +176,7 @@ namespace Crystalline
             /// </summary>
             public void Dispose()
             {
-                throw new NotImplementedException();
+                // ...
             }
 
             /// <summary>
@@ -178,7 +185,12 @@ namespace Crystalline
             /// <returns>True while the end of the range hasn't been reached.</returns>
             public bool MoveNext()
             {
-                throw new NotImplementedException();
+                if (Current + _step < _upper)
+                {
+                    Current += _step;
+                    return true;
+                }
+                return false;
             }
 
             /// <summary>
@@ -186,13 +198,13 @@ namespace Crystalline
             /// </summary>
             public void Reset()
             {
-                throw new NotImplementedException();
+                Current = _lower - _step;
             }
 
             /// <summary>
             /// Retrieves the current value of the iteration.
             /// </summary>
-            public int Current { get; }
+            public int Current { get; private set; }
 
             /// <summary>
             /// Retrieves the current value of the interation.
