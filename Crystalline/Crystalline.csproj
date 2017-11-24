@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Geometry\IPrimitive.cs" />
+    <Compile Include="Geometry\PrimitiveType.cs" />
     <Compile Include="Range.cs" />
     <Compile Include="Geometry\IntersectionExtensions.cs" />
     <Compile Include="Geometry\Line2D.cs" />
