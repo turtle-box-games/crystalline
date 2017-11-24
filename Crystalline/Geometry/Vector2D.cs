@@ -6,7 +6,9 @@ namespace Crystalline.Geometry
     /// Representation of a direction and distance in two-dimensional space.
     /// </summary>
     /// <remarks>All angles are corrected to be within 0 to 2*PI radians.</remarks>
-    public struct Vector2D
+    /// <remarks>Even though a vector is mathematically defined as an angle and magnitude,
+    /// the X and Y components are stored for faster computations.</remarks>
+    public struct Vector2D : IEquatable<Vector2D>
     {
         /// <summary>
         /// Direction of the vector in radians.
@@ -79,6 +81,7 @@ namespace Crystalline.Geometry
 
         /// <summary>
         /// Creates a new unit vector by normalizing the current one.
+        /// The magnitude will be one on the resulting vector.
         /// </summary>
         /// <returns>Normalized unit vector.</returns>
         public Vector2D Normalize()
@@ -88,6 +91,7 @@ namespace Crystalline.Geometry
 
         /// <summary>
         /// Creates a vector that cancels out the current one.
+        /// The resulting vector will have a 180 degree difference and negative magnitude.
         /// </summary>
         /// <returns>Flipped vector.</returns>
         public Vector2D Opposite()
