@@ -5,6 +5,5 @@
     /// </summary>
     public interface IPrimitive
     {
-        PrimitiveType Type { get; }
     }
 }

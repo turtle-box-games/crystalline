@@ -6,7 +6,7 @@ namespace Crystalline.Geometry
     /// Two-dimensional point.
     /// X and Y coordinate values are represented as floating-point numbers.
     /// </summary>
-    public struct Point2D : IEquatable<Point2D>
+    public struct Point2D : IPrimitive, IEquatable<Point2D>
     {
         /// <summary>
         /// Point at the center of the coordinate grid.

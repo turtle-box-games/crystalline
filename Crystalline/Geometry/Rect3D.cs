@@ -1,6 +1,6 @@
 ﻿namespace Crystalline.Geometry
 {
-    public struct Rect3D
+    public struct Rect3D : IPrimitive
     {
         
     }

@@ -2,7 +2,7 @@
 
 namespace Crystalline.Geometry
 {
-    public struct Line3D : IEquatable<Line3D>
+    public struct Line3D : IPrimitive, IEquatable<Line3D>
     {
         public Point3D PointA { get; }
         

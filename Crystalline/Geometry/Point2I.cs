@@ -7,7 +7,7 @@ namespace Crystalline.Geometry
     /// X and Y coordinate values are represented as integers.
     /// </summary>
     /// <remarks>This structure is ideal for tracking positions in user interfaces.</remarks>
-    public struct Point2I : IEquatable<Point2I>
+    public struct Point2I : IPrimitive, IEquatable<Point2I>
     {
         /// <summary>
         /// Point at the center of the coordinate grid.

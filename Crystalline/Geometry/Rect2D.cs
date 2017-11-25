@@ -2,7 +2,7 @@
 
 namespace Crystalline.Geometry
 {
-    public struct Rect2D : IEquatable<Rect2D>
+    public struct Rect2D : IPrimitive, IEquatable<Rect2D>
     {
         public double X { get; }
         

@@ -2,7 +2,7 @@
 
 namespace Crystalline.Geometry
 {
-    public struct Tri2D : IEquatable<Tri2D>
+    public struct Tri2D : IPrimitive, IEquatable<Tri2D>
     {
         public Point2D PointA { get; }
         

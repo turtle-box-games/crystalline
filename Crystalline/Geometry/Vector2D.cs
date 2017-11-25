@@ -8,7 +8,7 @@ namespace Crystalline.Geometry
     /// <remarks>All angles are corrected to be within 0 to 2*PI radians.</remarks>
     /// <remarks>Even though a vector is mathematically defined as an angle and magnitude,
     /// the X and Y components are stored for faster computations.</remarks>
-    public struct Vector2D : IEquatable<Vector2D>
+    public struct Vector2D : IPrimitive, IEquatable<Vector2D>
     {
         /// <summary>
         /// Direction of the vector in radians.

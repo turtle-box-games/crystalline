@@ -6,7 +6,7 @@ namespace Crystalline.Geometry
     /// Three-dimensional point.
     /// X, Y, and Z coordinate values are represented as floating-point numbers.
     /// </summary>
-    public struct Point3D : IEquatable<Point3D>
+    public struct Point3D : IPrimitive, IEquatable<Point3D>
     {
         /// <summary>
         /// Point at the center of the coordinate grid.
