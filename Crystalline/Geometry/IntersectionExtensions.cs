@@ -24,6 +24,10 @@ namespace Crystalline.Geometry
                     return Contains(rect, other);
                 case Tri2D tri:
                     return Contains(tri, other);
+                case Circle circle:
+                    return Contains(circle, other);
+                case Sphere sphere:
+                    return Contains(sphere, other);
                 default:
                     throw new NotSupportedException(
                         $"Primitive {primitive.GetType()} does not support checking for containment");
@@ -46,6 +50,10 @@ namespace Crystalline.Geometry
                     return Intersects(tri, other);
                 case Tri3D tri:
                     return Intersects(tri, other);
+                case Circle circle:
+                    return Intersects(circle, other);
+                case Sphere sphere:
+                    return Intersects(sphere, other);
                 default:
                     throw new NotSupportedException(
                         $"Primitive {primitive.GetType()} does not support checking for containment");
@@ -123,6 +131,8 @@ namespace Crystalline.Geometry
                     return Contains(rect, tri);
                 case Line2D line:
                     return Contains(rect, line);
+                case Circle circle:
+                    return Contains(rect, circle);
                 default:
                     throw new NotSupportedException($"Unsupported containable primitive {primitive.GetType()}");
             }
@@ -138,6 +148,8 @@ namespace Crystalline.Geometry
                     return Intersects(rect, tri);
                 case Line2D line:
                     return Intersects(rect, line);
+                case Circle circle:
+                    return Intersects(rect, circle);
                 default:
                     throw new NotImplementedException($"Unsupported intersectable primitive {primitive.GetType()}");
             }
@@ -163,6 +175,11 @@ namespace Crystalline.Geometry
             throw new NotImplementedException();
         }
 
+        public static bool Contains(this Rect2D rect, Circle circle)
+        {
+            throw new NotImplementedException();
+        }
+
         public static bool Intersects(this Rect2D rect, Rect2D other)
         {
             throw new NotImplementedException();
@@ -174,6 +191,11 @@ namespace Crystalline.Geometry
         }
 
         public static bool Intersects(this Rect2D rect, Line2D line)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool Intersects(this Rect2D rect, Circle circle)
         {
             throw new NotImplementedException();
         }
@@ -251,6 +273,8 @@ namespace Crystalline.Geometry
                     return Contains(rect, other);
                 case Tri3D tri:
                     return Contains(rect, tri);
+                case Sphere sphere:
+                    return Contains(rect, sphere);
                 default:
                     throw new NotSupportedException($"Unsupported containable primitive {primitive.GetType()}");
             }
@@ -266,6 +290,8 @@ namespace Crystalline.Geometry
                     return Intersects(rect, other);
                 case Tri3D tri:
                     return Intersects(rect, tri);
+                case Sphere sphere:
+                    return Intersects(rect, sphere);
                 default:
                     throw new NotImplementedException($"Unsupported intersectable primitive {primitive.GetType()}");
             }
@@ -291,6 +317,11 @@ namespace Crystalline.Geometry
             throw new NotImplementedException();
         }
 
+        public static bool Contains(this Rect3D rect, Sphere sphere)
+        {
+            throw new NotImplementedException();
+        }
+
         public static bool Intersects(this Rect3D rect, Line3D line)
         {
             throw new NotImplementedException();
@@ -302,6 +333,11 @@ namespace Crystalline.Geometry
         }
 
         public static bool Intersects(this Rect3D rect, Tri3D tri)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool Intersects(this Rect3D rect, Sphere sphere)
         {
             throw new NotImplementedException();
         }
@@ -322,6 +358,8 @@ namespace Crystalline.Geometry
                     return Contains(tri, rect);
                 case Tri2D other:
                     return Contains(tri, other);
+                case Circle circle:
+                    return Contains(tri, circle);
                 default:
                     throw new NotSupportedException($"Unsupported containable primitive {primitive.GetType()}");
             }
@@ -337,6 +375,8 @@ namespace Crystalline.Geometry
                     return Intersects(tri, rect);
                 case Tri2D other:
                     return Intersects(tri, other);
+                case Circle circle:
+                    return Intersects(tri, circle);
                 default:
                     throw new NotImplementedException($"Unsupported intersectable primitive {primitive.GetType()}");
             }
@@ -362,6 +402,11 @@ namespace Crystalline.Geometry
             throw new NotImplementedException();
         }
 
+        public static bool Contains(this Tri2D tri, Circle circle)
+        {
+            throw new NotImplementedException();
+        }
+
         public static bool Intersects(this Tri2D tri, Line2D line)
         {
             throw new NotImplementedException();
@@ -373,6 +418,11 @@ namespace Crystalline.Geometry
         }
 
         public static bool Intersects(this Tri2D tri, Tri2D other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool Intersects(this Tri2D tri, Circle circle)
         {
             throw new NotImplementedException();
         }
@@ -391,6 +441,8 @@ namespace Crystalline.Geometry
                     return Intersects(tri, rect);
                 case Tri3D other:
                     return Intersects(tri, other);
+                case Sphere sphere:
+                    return Intersects(tri, sphere);
                 default:
                     throw new NotImplementedException($"Unsupported intersectable primitive {primitive.GetType()}");
             }
@@ -407,6 +459,181 @@ namespace Crystalline.Geometry
         }
 
         public static bool Intersects(this Tri3D tri, Tri3D other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool Intersects(this Tri3D tri, Sphere sphere)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Circle
+
+        public static bool Contains(this Circle circle, IPrimitive primitive)
+        {
+            switch (primitive)
+            {
+                case Point2D point:
+                    return Contains(circle, point);
+                case Line2D line:
+                    return Contains(circle, line);
+                case Rect2D rect:
+                    return Contains(circle, rect);
+                case Tri2D tri:
+                    return Contains(circle, tri);
+                case Circle other:
+                    return Contains(circle, other);
+                default:
+                    throw new NotSupportedException($"Unsupported containable primitive {primitive.GetType()}");
+            }
+        }
+
+        public static bool Intersects(this Circle circle, IPrimitive primitive)
+        {
+            switch (primitive)
+            {
+                case Line2D line:
+                    return Intersects(circle, line);
+                case Rect2D rect:
+                    return Intersects(circle, rect);
+                case Tri2D tri:
+                    return Intersects(circle, tri);
+                case Circle other:
+                    return Intersects(circle, other);
+                default:
+                    throw new NotImplementedException($"Unsupported intersectable primitive {primitive.GetType()}");
+            }
+        }
+
+        public static bool Contains(this Circle circle, Point2D point)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool Contains(this Circle circle, Line2D line)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool Contains(this Circle circle, Rect2D rect)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool Contains(this Circle circle, Tri2D tri)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool Contains(this Circle circle, Circle other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool Intersects(this Circle circle, Line2D line)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool Intersects(this Circle circle, Rect2D rect)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool Intersects(this Circle circle, Tri2D tri)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool Intersects(this Circle circle, Circle other)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Sphere
+
+        public static bool Contains(this Sphere sphere, IPrimitive primitive)
+        {
+            switch (primitive)
+            {
+                case Point3D point:
+                    return Contains(sphere, point);
+                case Line3D line:
+                    return Contains(sphere, line);
+                case Rect3D rect:
+                    return Contains(sphere, rect);
+                case Tri3D tri:
+                    return Contains(sphere, tri);
+                case Sphere other:
+                    return Contains(sphere, other);
+                default:
+                    throw new NotSupportedException($"Unsupported containable primitive {primitive.GetType()}");
+            }
+        }
+
+        public static bool Intersects(this Sphere sphere, IPrimitive primitive)
+        {
+            switch (primitive)
+            {
+                case Line3D line:
+                    return Intersects(sphere, line);
+                case Rect3D rect:
+                    return Intersects(sphere, rect);
+                case Tri3D tri:
+                    return Intersects(sphere, tri);
+                case Sphere other:
+                    return Intersects(sphere, other);
+                default:
+                    throw new NotImplementedException($"Unsupported intersectable primitive {primitive.GetType()}");
+            }
+        }
+
+        public static bool Contains(this Sphere sphere, Point3D point)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool Contains(this Sphere sphere, Line3D line)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool Contains(this Sphere sphere, Rect3D rect)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool Contains(this Sphere sphere, Tri3D tri)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool Contains(this Sphere sphere, Sphere other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool Intersects(this Sphere sphere, Line3D line)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool Intersects(this Sphere sphere, Rect3D rect)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool Intersects(this Sphere sphere, Tri3D tri)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool Intersects(this Sphere sphere, Sphere other)
         {
             throw new NotImplementedException();
         }

@@ -39,9 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Geometry\Circle.cs" />
     <Compile Include="Geometry\IPrimitive.cs" />
     <Compile Include="Geometry\Line2I.cs" />
     <Compile Include="Geometry\Line3I.cs" />
+    <Compile Include="Geometry\Sphere.cs" />
     <Compile Include="Range.cs" />
     <Compile Include="Geometry\IntersectionExtensions.cs" />
     <Compile Include="Geometry\Line2D.cs" />
