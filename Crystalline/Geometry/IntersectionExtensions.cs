@@ -60,6 +60,8 @@ namespace Crystalline.Geometry
             {
                 case Point2I point:
                     return Contains(rect, point);
+                case Line2I line:
+                    return Contains(rect, line);
                 case Rect2I other:
                     return Contains(rect, other);
                 default:
@@ -71,6 +73,8 @@ namespace Crystalline.Geometry
         {
             switch (primitive)
             {
+                case Line2I line:
+                    return Intersects(rect, line);
                 case Rect2I other:
                     return Intersects(rect, other);
                 default:
@@ -83,7 +87,17 @@ namespace Crystalline.Geometry
             throw new NotImplementedException();
         }
 
+        public static bool Contains(this Rect2I rect, Line2I line)
+        {
+            throw new NotImplementedException();
+        }
+
         public static bool Contains(this Rect2I rect, Rect2I other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool Intersects(this Rect2I rect, Line2I line)
         {
             throw new NotImplementedException();
         }
@@ -170,6 +184,8 @@ namespace Crystalline.Geometry
             {
                 case Point3I point:
                     return Contains(rect, point);
+                case Line3I line:
+                    return Contains(rect, line);
                 case Rect3I other:
                     return Contains(rect, other);
                 default:
@@ -181,6 +197,8 @@ namespace Crystalline.Geometry
         {
             switch (primitive)
             {
+                case Line3I line:
+                    return Intersects(rect, line);
                 case Rect3I other:
                     return Intersects(rect, other);
                 default:
@@ -193,7 +211,17 @@ namespace Crystalline.Geometry
             throw new NotImplementedException();
         }
 
+        public static bool Contains(this Rect3I rect, Line3I line)
+        {
+            throw new NotImplementedException();
+        }
+
         public static bool Contains(this Rect3I rect, Rect3I other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool Intersects(this Rect3I rect, Line3I line)
         {
             throw new NotImplementedException();
         }
