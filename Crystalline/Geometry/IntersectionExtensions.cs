@@ -119,6 +119,8 @@ namespace Crystalline.Geometry
                     return Contains(rect, point);
                 case Rect2D other:
                     return Contains(rect, other);
+                case Tri2D tri:
+                    return Contains(rect, tri);
                 case Line2D line:
                     return Contains(rect, line);
                 default:
@@ -132,6 +134,8 @@ namespace Crystalline.Geometry
             {
                 case Rect2D other:
                     return Intersects(rect, other);
+                case Tri2D tri:
+                    return Intersects(rect, tri);
                 case Line2D line:
                     return Intersects(rect, line);
                 default:
