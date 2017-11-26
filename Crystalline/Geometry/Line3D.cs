@@ -14,6 +14,11 @@ namespace Crystalline.Geometry
         {
             throw new NotImplementedException();
         }
+
+        public Line3D Flip()
+        {
+            throw new NotImplementedException();
+        }
         
         public override string ToString()
         {
